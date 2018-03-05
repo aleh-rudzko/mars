@@ -23,7 +23,6 @@ class TypeServiceImpl implements TypeService {
             TypeModel.findOne({_id: Types.ObjectId(id)}).then(resolve).catch(reject);
         });
     }
-
 }
 
 

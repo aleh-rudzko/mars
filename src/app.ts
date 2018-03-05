@@ -11,8 +11,7 @@ setUpConnection();
 const app = express();
 
 app.use('/node_modules',  express.static(path.join(process.cwd(), 'node_modules')));
-app.use("/out", express.static(path.join(process.cwd(), 'out')));
-app.use(express.static(path.join(process.cwd(), 'views')));
+app.use("/public", express.static(path.join(process.cwd(), 'public')));
 
 
 app.use(logger("dev"));
@@ -22,7 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", (req, res) => {
-    res.sendFile('index.html', {root: path.join(process.cwd(), "/views")});
+    res.sendFile('index.html', {root: path.join(process.cwd(), "/public")});
 });
 
 app.use('/v1/types', typeRoutes);
