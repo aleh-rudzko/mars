@@ -19,7 +19,7 @@ export default class TypeEditor extends React.Component<TypeEditorProps, TypeEdi
         }
     }
 
-   handleNameChange = (event) => {
+    handleNameChange = (event) => {
         this.setState({
             name: event.target.value
         })

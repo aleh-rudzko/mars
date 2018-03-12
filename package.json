@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "gulp compile",
     "start": "webpack && gulp compile && node out/app.js",
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack-dev-server",
+    "server": "node out/app.js",
+    "dev-client": "webpack --watch",
+    "dev-server": "gulp compile"
   },
   "author": "",
   "license": "ISC",
@@ -35,7 +38,7 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.5.0",
+    "awesome-typescript-loader": "^5.0.0-0",
     "css-loader": "^0.28.10",
     "gulp": "^3.9.1",
     "gulp-typescript": "^4.0.1",
