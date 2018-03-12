@@ -1,6 +1,7 @@
 import * as React from "react";
 import TypeEditor from "./type/TypeEditor";
 import TypeList from "./type/TypeList";
+import Navbar from "./navbar/Navbar";
 
 import "./App.less";
 import { Type } from "../models/Type";
@@ -42,10 +43,14 @@ export default class App extends React.Component<{}, AppState> {
 
     render() {
         return (
-            <div className="center">
-                <h1>App</h1>
-                <TypeEditor onTypeAdd={this.handleTypeAdd}/>
-                <TypeList types={this.state.types}/>
+            <div>
+                <Navbar></Navbar>
+
+                <div className="center">
+                    <h1>App</h1>
+                    <TypeEditor onTypeAdd={this.handleTypeAdd}/>
+                    <TypeList types={this.state.types}/>
+                </div>
             </div>
         );
     }
