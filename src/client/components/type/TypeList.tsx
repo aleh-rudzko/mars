@@ -1,9 +1,10 @@
 import * as React from "react";
+import * as Immutable from 'immutable';
 import TypeItem from "./TypeItem";
 import { Type } from "../../models/Type";
 
 interface TypeListProps {
-    types: Type[]
+    types: Immutable.List<Type>
 }
 
 export default class TypeList extends React.Component<TypeListProps, {}> {
@@ -16,7 +17,7 @@ export default class TypeList extends React.Component<TypeListProps, {}> {
                 <h1>TypeList</h1>
                 {
                     this.props.types.map((type, index) => {
-                        return <TypeItem key={index}/>
+                        return <TypeItem key={index} name={type.name} description={type.description}/>
                     })
 
                 }

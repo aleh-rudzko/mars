@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import App from "./components/App";
+import TypeContainer from "./components/type/TypeContainer";
 
 
 ReactDOM.render(
-    <App />,
+    <TypeContainer />,
     document.getElementById("example")
 );
