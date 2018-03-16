@@ -1,10 +1,9 @@
 import * as React from "react";
-import * as Immutable from 'immutable';
 import TypeItem from "./TypeItem";
 import { Type } from "../../models/Type";
 
 interface TypeListProps {
-    types: Immutable.List<Type>
+    types: Type[]
 }
 
 export default class TypeList extends React.Component<TypeListProps, {}> {

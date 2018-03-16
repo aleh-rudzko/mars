@@ -1,23 +1,22 @@
 import { ReduceStore } from "flux/utils";
-import * as Immutable from 'immutable';
 import TypeDispatcher from "../../dispatcher/TypeDispatcher";
 import { TypeActionTypes } from "../../constants/TypeActionTypes";
 import {Type} from "../../models/Type";
 
 
-class TypesStore extends ReduceStore<Immutable.List<Type>, any> {
+class TypesStore extends ReduceStore<Type[], any> {
     constructor() {
 	    super(TypeDispatcher);
     }
 
-	getInitialState(): Immutable.List<Type> {
-		return Immutable.List<Type>();
+	getInitialState(): Type[] {
+		return [];
 	}
 
-    reduce(state, action): Immutable.List<Type> {
+    reduce(state, action): Type[] {
         switch (action.eventName) {
             case TypeActionTypes.ADD_TYPE:
-		        return state.push(action.type);
+		        return [...state, action. type];
 
             default:
                 return state;
