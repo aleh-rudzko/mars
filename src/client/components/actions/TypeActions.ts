@@ -1,13 +1,15 @@
 import { Type } from "../../models/Type";
 import TypeDispatcher from "../../dispatcher/TypeDispatcher";
+import {TypeActionTypes} from "../../constants/TypeActionTypes";
 
-const Actions = {
+
+const TypeActions = {
     addType(type: Type) {
         TypeDispatcher.dispatch({
-            eventName: TypeActions.ADD_TYPE,
+            eventName: TypeActionTypes.ADD_TYPE,
             type
         })
     }
 };
 
-export default Actions;
+export default TypeActions;

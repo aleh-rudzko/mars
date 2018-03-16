@@ -16,7 +16,7 @@ export default class TypeList extends React.Component<TypeListProps, {}> {
                 <h1>TypeList</h1>
                 {
                     this.props.types.map((type, index) => {
-                        return <TypeItem key={index}/>
+                        return <TypeItem key={index} name={type.name} description={type.description}/>
                     })
 
                 }
