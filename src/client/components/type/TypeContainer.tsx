@@ -1,7 +1,9 @@
+import * as React from "react";
 import {Container} from 'flux/utils';
 import TypesStore from "../stores/TypesStore";
 import TypeActions from "../actions/TypeActions";
-import App from "../App"
+import TypeEditor from "./TypeEditor";
+import TypeList from "./TypeList";
 
 
 function getStores() {
@@ -19,4 +21,13 @@ function getState() {
 	};
 }
 
-export default Container.createFunctional(App, getStores, getState);
+function ContainerView(props) {
+	return (
+		<div>
+			<TypeEditor onTypeAdd={props.addType}/>
+			<TypeList types={props.types} deleteType={props.deleteType}/>
+		</div>
+	);
+}
+
+export default Container.createFunctional(ContainerView, getStores, getState);

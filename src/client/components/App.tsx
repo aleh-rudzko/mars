@@ -1,8 +1,7 @@
 import * as React from "react";
-import TypeEditor from "./type/TypeEditor";
-import TypeList from "./type/TypeList";
 import Navbar from "./navbar/Navbar";
 import "./App.less";
+import TypeContainer from "./type/TypeContainer";
 
 
 export default function App(props) {
@@ -12,8 +11,7 @@ export default function App(props) {
 
 			<div className="center">
 				<h1>App</h1>
-				<TypeEditor onTypeAdd={props.addType}/>
-				<TypeList types={props.types} deleteType={props.deleteType}/>
+				<TypeContainer/>
 			</div>
 		</div>
 	);
