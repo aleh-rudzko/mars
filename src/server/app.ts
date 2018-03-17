@@ -1,9 +1,10 @@
 import * as express from "express";
 import typeRoutes from "./api/type";
-import setUpConnection from "./utils/databaseUtil";
+import { closeConnection, setUpConnection } from "./utils/databaseUtil";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as path from "path";
+import config from "./etc/config";
 const errorHandler = require("errorhandler");
 
 setUpConnection();
@@ -27,6 +28,16 @@ app.use("/v1/types", typeRoutes);
 
 app.use(errorHandler());
 
-app.listen(3000, () => {
+app.listen(config.server.port, () => {
     console.log("Server is up and running on port 3000"); // tslint:disable-line
+});
+
+process.on("uncaughtException", (err) => {
+    console.error(err, "uncaughtException occurred. Server continuing to work"); // tslint:disable-line
+    closeConnection();
+});
+
+process.on("unhandledRejection", (err, promise) => {
+    console.error(err, "unhandledRejection", promise); // tslint:disable-line
+    closeConnection();
 });
