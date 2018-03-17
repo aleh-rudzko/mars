@@ -6,13 +6,15 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "jsx": "react"
+        "jsx": "react",
+        "outDir": "out",
+        "experimentalDecorators": true
     },
     "include": [
-        "src/server/**/*"
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
-      "src/client"
+        "src/client"
     ]
 }

@@ -1,5 +1,5 @@
-import { Type, TypeModel } from "../models/type";
-import { Types } from "mongoose"
+import { Type, getTypeModel } from "../models/type";
+import { Types } from "mongoose";
 
 interface TypeService {
     all(): Promise<Type[]>;
@@ -8,23 +8,20 @@ interface TypeService {
 }
 
 class TypeServiceImpl implements TypeService {
-    public all(): Promise<Type[]> {
-        return new Promise((resolve, reject) => {
-            TypeModel.find().then(resolve).catch(reject);
-        })
+    public async all(): Promise<Type[]> {
+        return getTypeModel().find();
     }
 
     public create(type: Type): Promise<Type> {
-        return TypeModel.create(type);
+        return getTypeModel().create(type);
     }
 
     public findById(id: string): Promise<Type> {
         return new Promise((resolve, reject) => {
-            TypeModel.findOne({_id: Types.ObjectId(id)}).then(resolve).catch(reject);
+            getTypeModel().findOne({_id: Types.ObjectId(id)}).then(resolve).catch(reject);
         });
     }
 }
-
 
 let typeService: TypeService;
 
@@ -33,4 +30,4 @@ export default function getTypeService(): TypeService {
         typeService = new TypeServiceImpl();
     }
     return typeService;
-};
+}
