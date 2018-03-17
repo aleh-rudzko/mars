@@ -1,5 +1,5 @@
 import { Type, TypeModel } from "../models/type";
-import { Types } from "mongoose"
+import { Types } from "mongoose";
 
 interface TypeService {
     all(): Promise<Type[]>;
@@ -11,7 +11,7 @@ class TypeServiceImpl implements TypeService {
     public all(): Promise<Type[]> {
         return new Promise((resolve, reject) => {
             TypeModel.find().then(resolve).catch(reject);
-        })
+        });
     }
 
     public create(type: Type): Promise<Type> {
@@ -25,7 +25,6 @@ class TypeServiceImpl implements TypeService {
     }
 }
 
-
 let typeService: TypeService;
 
 export default function getTypeService(): TypeService {
@@ -33,4 +32,4 @@ export default function getTypeService(): TypeService {
         typeService = new TypeServiceImpl();
     }
     return typeService;
-};
+}
