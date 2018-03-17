@@ -6,10 +6,6 @@ before(async () => {
     await setUpConnection();
 });
 
-beforeEach(async () => {
-    await getTypeModel().collection.drop();
-});
-
 after(async () => {
     await closeConnection();
 });

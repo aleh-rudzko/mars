@@ -8,6 +8,7 @@ class TypeSpec {
 
     public static async before() {
         should();
+        await getTypeModel().collection.drop();
     }
 
     @test("hello world")
