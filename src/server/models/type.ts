@@ -9,16 +9,20 @@ const TypeSchema = new Schema({
     description: String
 });
 
-export interface Type extends Document {
+export interface Type {
     name: string;
     description: string;
 }
 
-let TypeModel: Model<Type>;
+export interface TypeModel extends Document, Type {
 
-export function getTypeModel(): Model<Type> {
-    if (!TypeModel) {
-        TypeModel = model<Type>("Type", TypeSchema);
+}
+
+let typeModel: Model<TypeModel>;
+
+export function getTypeModel(): Model<TypeModel> {
+    if (!typeModel) {
+        typeModel = model<TypeModel>("Type", TypeSchema);
     }
-    return TypeModel;
+    return typeModel;
 }
