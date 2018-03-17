@@ -4,15 +4,17 @@ import "./App.less";
 import TypeContainer from "./type/TypeContainer";
 
 
-export default function App(props) {
-	return (
-		<div>
-			<Navbar></Navbar>
+export default class App extends React.Component {
+	render() {
+		return (
+			<div>
+				<Navbar></Navbar>
 
-			<div className="center">
-				<h1>App</h1>
-				<TypeContainer/>
+				<div className="center">
+					<h1>App</h1>
+					<TypeContainer/>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
