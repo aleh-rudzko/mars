@@ -3,7 +3,6 @@ import getTypeService from "../services/type";
 
 const typeRoutes = Router();
 
-
 typeRoutes.get("/", async (req: Request, res: Response, next: NextFunction) => {
     const types = await getTypeService().all();
     res.send(types);

@@ -3,4 +3,7 @@
 node_modules/
 out/
 package-lock.json
-/public/build
+public/build
+src/**/*.js
+src/**/*.js.map
+src/**/*.jsx

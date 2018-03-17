@@ -1,3 +1,4 @@
+import { Container } from "flux/utils";
 import * as React from "react";
 import {Container} from 'flux/utils';
 import TypesStore from "../stores/TypesStore";
@@ -7,18 +8,18 @@ import TypeList from "./TypeList";
 
 
 function getStores() {
-	return [
-		TypesStore,
-	];
+    return [
+        TypesStore,
+    ];
 }
 
 function getState() {
-	return {
-		types: TypesStore.getState(),
+    return {
+        types: TypesStore.getState(),
 
-		addType: TypeActions.addType,
-		deleteType: TypeActions.deleteType
-	};
+        addType: TypeActions.addType,
+        deleteType: TypeActions.deleteType
+    };
 }
 
 function ContainerView(props) {

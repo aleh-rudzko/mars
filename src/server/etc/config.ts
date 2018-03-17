@@ -1,11 +1,11 @@
 const config = {
-    mongo: {
-        databaseUrl: "mongodb://localhost:27017",
-        databaseName: "patio"
+    database: {
+        url: process.env.DATABASE_URL || "mongodb://localhost:27017",
+        name: process.env.DATABASE_NAME || "mars"
     },
 
     server: {
-        port: 3000
+        port: process.env.SERVER_PORT || 3000
     }
 
 };

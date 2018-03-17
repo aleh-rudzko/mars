@@ -1,7 +1,4 @@
-import { Model } from "mongoose";
-import { Schema } from "mongoose";
-import { model } from "mongoose";
-import { Document } from "mongoose";
+import { Model, model, Schema, Document } from "mongoose";
 
 const TypeSchema = new Schema({
     name: {
@@ -12,9 +9,20 @@ const TypeSchema = new Schema({
     description: String
 });
 
-export interface Type extends Document {
+export interface Type {
     name: string;
     description: string;
 }
 
-export const TypeModel: Model<Type> = model<Type>("Type", TypeSchema);
+export interface TypeModel extends Document, Type {
+
+}
+
+let typeModel: Model<TypeModel>;
+
+export function getTypeModel(): Model<TypeModel> {
+    if (!typeModel) {
+        typeModel = model<TypeModel>("Type", TypeSchema);
+    }
+    return typeModel;
+}
