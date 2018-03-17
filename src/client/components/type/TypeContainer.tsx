@@ -1,4 +1,3 @@
-import { Container } from "flux/utils";
 import * as React from "react";
 import {Container} from 'flux/utils';
 import TypesStore from "../stores/TypesStore";
