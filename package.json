@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "gulp compile",
-    "start": "webpack && gulp compile && node out/app.js",
+    "tslint": "gulp tslint",
+    "start": "gulp tslint && webpack && gulp compile && node out/app.js",
     "start:dev": "webpack-dev-server",
     "server": "node out/app.js",
     "dev-client": "webpack --watch",
