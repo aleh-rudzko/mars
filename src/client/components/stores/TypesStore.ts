@@ -17,6 +17,8 @@ class TypesStore extends ReduceStore<Type[], any> {
 		switch (action.eventName) {
 			case TypeActionTypes.ADD_TYPE:
 				return [...state, action.type];
+			case TypeActionTypes.DELETE_TYPE:
+				return state.filter(t => t.id !== action.type.id);
 
 			default:
 				return state;

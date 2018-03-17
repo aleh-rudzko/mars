@@ -1,4 +1,4 @@
-import { Container } from 'flux/utils';
+import {Container} from 'flux/utils';
 import TypesStore from "../stores/TypesStore";
 import TypeActions from "../actions/TypeActions";
 import App from "../App"
@@ -15,6 +15,7 @@ function getState() {
 		types: TypesStore.getState(),
 
 		addType: TypeActions.addType,
+		deleteType: TypeActions.deleteType
 	};
 }
 
