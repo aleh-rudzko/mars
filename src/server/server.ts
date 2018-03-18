@@ -10,8 +10,7 @@ import forwardTo404 from "./middleware/forwardTo404";
 const swaggerUi = require("swagger-ui-express");
 
 import config from "./etc/config";
-
-const errorHandler = require("errorhandler");
+import errorHandler from "./middleware/errorHandler";
 
 export default class Server {
     public app: express.Application;
@@ -53,9 +52,7 @@ export default class Server {
             type: getTypeModel()
         };
 
-        this.app.use(forwardTo404);
-
-        this.app.use(errorHandler());
+        // this.app.use(forwardTo404);
     }
 
     public routes() {
@@ -66,5 +63,7 @@ export default class Server {
 
     public api() {
         this.app.use("/api/v1/types", typeRoutes);
+
+        this.app.use(errorHandler);
     }
 }

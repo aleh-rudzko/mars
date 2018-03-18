@@ -11,10 +11,8 @@ httpServer.listen(config.server.port);
 
 process.on("uncaughtException", (err) => {
     console.error(err, "uncaughtException occurred. Server continuing to work"); // tslint:disable-line
-    closeConnection();
 });
 
 process.on("unhandledRejection", (err, promise) => {
     console.error(err, "unhandledRejection", promise); // tslint:disable-line
-    closeConnection();
 });
