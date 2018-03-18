@@ -1,12 +1,14 @@
 import * as express from "express";
 import typeRoutes from "./api/type";
-import { closeConnection, setUpConnection } from "./utils/databaseUtil";
+import { setUpConnection } from "./utils/databaseUtil";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as path from "path";
 import { Models } from "./utils/models";
 import { getTypeModel } from "./models/type";
 import forwardTo404 from "./middleware/forwardTo404";
+const swaggerUi = require("swagger-ui-express");
+
 import config from "./etc/config";
 
 const errorHandler = require("errorhandler");
@@ -35,6 +37,8 @@ export default class Server {
 
         this.app.use("/node_modules",  express.static(path.join(process.cwd(), "node_modules")));
         this.app.use("/public", express.static(path.join(process.cwd(), "public")));
+
+        this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(require("../../swagger.json")));
 
         this.app.use(logger("dev"));
         this.app.use(bodyParser.json());
