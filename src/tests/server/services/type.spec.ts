@@ -39,6 +39,8 @@ class TypeSpec {
 
         expect(type.name).to.be.equal(name);
         expect(type.description).to.be.equal(description);
+        expect(type.createdAt).to.be.exist;
+        expect(type.updatedAt).to.be.exist;
     }
 
     @test("Find type by Id")
@@ -49,6 +51,8 @@ class TypeSpec {
 
         expect(type.name).to.be.equal("test");
         expect(type.description).to.be.equal("test");
+        expect(type.createdAt).to.be.exist;
+        expect(type.updatedAt).to.be.exist;
     }
 
     @test("Update type")
@@ -68,6 +72,8 @@ class TypeSpec {
         expect(type.id).to.be.equal(data.id);
         expect(type.name).to.be.equal(data.name);
         expect(type.description).to.be.equal(data.description);
+        expect(type.createdAt.getTime()).to.be.equal(createdType.createdAt.getTime());
+        expect(type.updatedAt.getTime() > type.createdAt.getTime()).to.be.true;
     }
 
     @test("Remove type")

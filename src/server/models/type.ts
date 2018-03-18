@@ -9,26 +9,13 @@ const TypeSchema = new Schema({
         trim: true
     },
     description: String,
-    createdAt: Date,
-    updatedAt: Date
-});
+}, { timestamps: true });
 
 TypeSchema.set("toJSON", {
     virtuals: true
 });
 
-TypeSchema.pre("save", function(next) {
-    const now = Date.now();
-
-    if (this.isNew) {
-        this.createdAt = now;
-    }
-    this.updatedAt = now;
-
-    next();
-});
-
-TypeSchema.pre("update", function(next) {
+TypeSchema.pre("findByIdAndUpdate", function(next) {
     this.updatedAt = Date.now();
     next();
 });
