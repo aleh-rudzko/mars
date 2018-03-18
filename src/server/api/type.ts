@@ -21,4 +21,14 @@ typeRoutes.get("/:id", async (req: Request, res: Response, next: NextFunction) =
     next();
 });
 
+typeRoutes.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
+    const type = await getTypeService().update({
+        ...req.body,
+        id: req.params.id
+    });
+
+    res.send(type);
+    next();
+});
+
 export default typeRoutes;
