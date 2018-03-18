@@ -1,4 +1,3 @@
-import { closeConnection } from "./utils/databaseUtil";
 import Server from "./server";
 import config from "./etc/config";
 import * as http from "http";
