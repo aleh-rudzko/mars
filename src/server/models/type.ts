@@ -13,6 +13,10 @@ const TypeSchema = new Schema({
     updatedAt: Date
 });
 
+TypeSchema.set("toJSON", {
+    virtuals: true
+});
+
 TypeSchema.pre("save", function(next) {
     const now = Date.now();
 
@@ -21,6 +25,11 @@ TypeSchema.pre("save", function(next) {
     }
     this.updatedAt = now;
 
+    next();
+});
+
+TypeSchema.pre("update", function(next) {
+    this.updatedAt = Date.now();
     next();
 });
 

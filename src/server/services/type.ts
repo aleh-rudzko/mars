@@ -23,7 +23,7 @@ class TypeServiceImpl implements TypeService {
     }
 
     public async update(type: Type): Promise<Type> {
-        return getTypeModel().findByIdAndUpdate(type.id, type);
+        return getTypeModel().findByIdAndUpdate(type.id, type, { "new": true });
     }
 
     public async remove(id: string): Promise<Type> {
