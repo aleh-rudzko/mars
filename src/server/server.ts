@@ -6,7 +6,6 @@ import * as logger from "morgan";
 import * as path from "path";
 import { Models } from "./utils/models";
 import { getTypeModel } from "./models/type";
-import forwardTo404 from "./middleware/forwardTo404";
 const swaggerUi = require("swagger-ui-express");
 
 import config from "./etc/config";
@@ -51,8 +50,6 @@ export default class Server {
         this.models = {
             type: getTypeModel()
         };
-
-        // this.app.use(forwardTo404);
     }
 
     public routes() {
