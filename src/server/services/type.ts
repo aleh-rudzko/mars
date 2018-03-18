@@ -6,6 +6,7 @@ interface TypeService {
     create(type: Type): Promise<Type>;
     findById(id: string): Promise<Type>;
     update(type: Type): Promise<Type>;
+    remove(id: string): Promise<Type>;
 }
 
 class TypeServiceImpl implements TypeService {
@@ -23,6 +24,10 @@ class TypeServiceImpl implements TypeService {
 
     public async update(type: Type): Promise<Type> {
         return getTypeModel().findByIdAndUpdate(type.id, type);
+    }
+
+    public async remove(id: string): Promise<Type> {
+        return getTypeModel().findByIdAndRemove(id);
     }
 }
 

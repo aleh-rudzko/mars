@@ -70,4 +70,14 @@ class TypeSpec {
         expect(type.description).to.be.equal(data.description);
     }
 
+    @test("Remove type")
+    public async removeType() {
+        const createdType = await getTypeModel().create({name: "test", description: "test"});
+
+        await getTypeService().remove(createdType.id);
+
+        const type = await getTypeModel().findById(createdType.id);
+
+        expect(type).to.be.null;
+    }
 }
