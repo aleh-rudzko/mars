@@ -1,29 +1,26 @@
 import { expect, should } from "chai";
 import { suite, test } from "mocha-typescript";
-import { getTypeModel, TypeModel } from "../../../server/models/type";
+import { getTypeModel } from "../../../server/models/type";
 import getTypeService from "../../../server/services/type";
-import { Model } from "mongoose";
+import { Type } from "../../../server/interfaces/type";
 
 @suite("Type service")
 class TypeSpec {
 
-    private static model: Model<TypeModel>;
-
     public static async before() {
         should();
-        TypeSpec.model = getTypeModel();
     }
 
     public async before() {
-        await TypeSpec.model.collection.drop();
+        await getTypeModel().collection.drop();
     }
 
-    @test("getTypes")
+    @test("Get all types")
     public async getTypes() {
         await Promise.all([
-            TypeSpec.model.create({name: "test1", description: "test"}),
-            TypeSpec.model.create({name: "test2", description: "test"}),
-            TypeSpec.model.create({name: "test3", description: "test"}),
+            getTypeModel().create({ name: "test", description: "test" }),
+            getTypeModel().create({ name: "test2", description: "test" }),
+            getTypeModel().create({ name: "test3", description: "test" })
         ]);
 
         const types = await getTypeService().all();
@@ -31,12 +28,12 @@ class TypeSpec {
         expect(types.length).to.be.equal(3);
     }
 
-    @test("createType")
+    @test("Create type")
     public async createType() {
-        const name = "test1";
+        const name = "test";
         const description = "testDescription";
 
-        await TypeSpec.model.create({ name , description });
+        await getTypeService().create({ name , description });
 
         const type = await getTypeModel().findOne({ name });
 
@@ -44,14 +41,33 @@ class TypeSpec {
         expect(type.description).to.be.equal(description);
     }
 
-    @test("findById")
+    @test("Find type by Id")
     public async findById() {
-        const createdType = await TypeSpec.model.create({name: "test1", description: "test"});
+        const createdType = await getTypeModel().create({ name: "test", description: "test" });
 
-        const type = await getTypeService().findById(createdType.id.toString());
+        const type = await getTypeService().findById(createdType.id);
 
-        expect(type.name).to.be.equal("test1");
+        expect(type.name).to.be.equal("test");
         expect(type.description).to.be.equal("test");
+    }
+
+    @test("Update type")
+    public async updateType() {
+        const createdType = await getTypeModel().create({name: "test", description: "test"});
+
+        const data: Type = {
+            id: createdType.id,
+            name: "updatedName",
+            description: "updatedDescription"
+        };
+
+        await getTypeService().update(data);
+
+        const type = await getTypeModel().findById(createdType.id);
+
+        expect(type.id).to.be.equal(data.id);
+        expect(type.name).to.be.equal(data.name);
+        expect(type.description).to.be.equal(data.description);
     }
 
 }

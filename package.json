@@ -7,7 +7,7 @@
     "node": ">=8.0 <9"
   },
   "scripts": {
-    "test": "DATABASE_NAME=test gulp unit-test",
+    "test": "DATABASE_NAME='test' gulp unit-test",
     "compile": "gulp compile",
     "tslint": "gulp tslint",
     "clean": "gulp clean",

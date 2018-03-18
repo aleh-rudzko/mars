@@ -1,10 +1,11 @@
-import { Type, getTypeModel } from "../models/type";
-import { Types } from "mongoose";
+import { getTypeModel } from "../models/type";
+import { Type } from "../interfaces/type";
 
 interface TypeService {
     all(): Promise<Type[]>;
     create(type: Type): Promise<Type>;
     findById(id: string): Promise<Type>;
+    update(type: Type): Promise<Type>;
 }
 
 class TypeServiceImpl implements TypeService {
@@ -16,10 +17,12 @@ class TypeServiceImpl implements TypeService {
         return getTypeModel().create(type);
     }
 
-    public findById(id: string): Promise<Type> {
-        return new Promise((resolve, reject) => {
-            getTypeModel().findOne({_id: Types.ObjectId(id)}).then(resolve).catch(reject);
-        });
+    public async findById(id: string): Promise<Type> {
+        return getTypeModel().findById(id);
+    }
+
+    public async update(type: Type): Promise<Type> {
+        return getTypeModel().findByIdAndUpdate(type.id, type);
     }
 }
 
