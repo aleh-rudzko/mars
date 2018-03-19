@@ -2,8 +2,6 @@ import * as mongoose from "mongoose";
 import config from "../etc/config";
 
 export async function setUpConnection() {
-    mongoose.connect(`${config.database.url}/${config.database.name}`);
-
     const db = mongoose.connection;
 
     db.on("error", () => {
@@ -16,6 +14,8 @@ export async function setUpConnection() {
     db.on("disconnected", function() {
         console.log("Connection disconnected"); // tslint:disable-line
     });
+
+    return mongoose.connect(`${config.database.url}/${config.database.name}`);
 }
 
 export async function closeConnection() {

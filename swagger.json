@@ -1,0 +1,232 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Mars - API",
+    "title": "Mars"
+  },
+  "basePath": "/api/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/types": {
+      "get": {
+        "tags": [
+          "Type"
+        ],
+        "summary": "Get list of types",
+        "responses": {
+          "200": {
+            "description": "List of types",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Type"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Type"
+        ],
+        "summary": "Create type",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewType"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "List of types",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/Type"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      }
+    },
+    "/types/{id}": {
+      "get": {
+        "tags": [
+          "Type"
+        ],
+        "summary": "Get type",
+        "parameters": [
+          {
+            "$ref": "#/parameters/objectId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get type",
+            "schema": {
+              "$ref": "#/definitions/Type"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Type"
+        ],
+        "summary": "Update type",
+        "parameters": [
+          {
+            "$ref": "#/parameters/objectId"
+          },
+          {
+            "name": "type",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update type",
+            "schema": {
+              "$ref": "#/definitions/Type"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Type"
+        ],
+        "summary": "Delete type",
+        "parameters": [
+          {
+            "$ref": "#/parameters/objectId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ErrorModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "objectId": {
+      "name": "id",
+      "description": "Id",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "example": "5aad982d923a052cb56a219c"
+    }
+  },
+  "definitions": {
+    "NewType": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "typeName"
+        },
+        "description": {
+          "type": "string",
+          "example": "typeDescription"
+        }
+      }
+    },
+    "Type": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/definitions/NewType"
+        },
+        {
+          "required": [
+            "_id"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "5aad982d923a052cb56a219c"
+            },
+            "createdAt": {
+              "type": "string",
+              "description": "Update time (ISO 8601 timestamp)",
+              "example": "2018-03-17T22:35:25.245Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "description": "Update time (ISO 8601 timestamp)",
+              "example": "2018-03-17T22:35:25.245Z"
+            }
+          }
+        }
+      ]
+    },
+    "ErrorModel": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+
