@@ -10,6 +10,13 @@ export class InternalServerError extends BaseError {
     }
 }
 
+export class CrudTypeNotFound<T> extends BaseError {
+    constructor() {
+        let ctor: { new (): T };
+        super(404, 100, ctor.name + " not found");
+    }
+}
+
 export class TypeNotFound extends BaseError {
     constructor() {
         super(404, 100, "Type not found");

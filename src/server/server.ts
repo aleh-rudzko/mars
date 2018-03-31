@@ -1,6 +1,7 @@
 import * as express from "express";
 import typeRoutes from "./api/type";
-import { setUpConnection } from "./utils/databaseUtil";
+import modelAPI from "./api/model";
+import { setUpDBConnection } from "./utils/databaseUtil";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as path from "path";
@@ -45,7 +46,7 @@ export default class Server {
             extended: true
         }));
 
-        setUpConnection();
+        setUpDBConnection();
 
         this.models = {
             type: getTypeModel()
@@ -60,6 +61,7 @@ export default class Server {
 
     public api() {
         this.app.use("/api/v1/types", typeRoutes);
+        this.app.use("/api/v1/models", modelAPI);
 
         this.app.use(errorHandler);
     }
