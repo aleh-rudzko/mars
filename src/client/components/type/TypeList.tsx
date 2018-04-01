@@ -5,7 +5,8 @@ import { Type } from "../../models/Type";
 interface TypeListProps {
     types: Type[],
 
-    deleteType: (type: Type) => void
+    deleteType: (type: Type) => void,
+    updateType: (type: Type) => void
 }
 
 export default class TypeList extends React.Component<TypeListProps, {}> {
@@ -17,6 +18,10 @@ export default class TypeList extends React.Component<TypeListProps, {}> {
         this.props.deleteType(type)
     }
 
+    editType(type: Type): void {
+        this.props.updateType(type)
+    }
+
     render() {
         return (
             <div>
@@ -26,7 +31,12 @@ export default class TypeList extends React.Component<TypeListProps, {}> {
                         return (
                             <div key={index}>
                                 <TypeItem id={type.id} name={type.name} description={type.description}/>
-                                <button onClick={() => this.deleteType(type)}>remove</button>
+                                <button onClick={() => this.deleteType(type)}>
+                                    remove
+                                </button>
+                                <button onClick={() => this.editType(type)}>
+                                    Edit
+                                </button>
                             </div>
                         )
                     })

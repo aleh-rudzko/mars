@@ -14,6 +14,12 @@ const TypeActions = {
             eventName: TypeActionTypes.DELETE_TYPE,
             type
         });
+    },
+    updateType(type: Type) {
+        TypeDispatcher.dispatch({
+            eventName: TypeActionTypes.UPDATE_TYPE,
+            type
+        });
     }
 };
 

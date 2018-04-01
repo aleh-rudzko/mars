@@ -13,7 +13,7 @@
     "clean": "gulp clean",
     "start": "gulp tslint && webpack && gulp compile && node out/server/app.js",
     "start:dev": "webpack-dev-server",
-    "server": "node out/app.js",
+    "server": "node out/server/app.js",
     "dev-client": "webpack --watch",
     "dev-server": "gulp compile"
   },
