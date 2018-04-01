@@ -1,0 +1,11 @@
+{
+  "NewType": {
+    "$ref": "./NewType.json"
+  },
+  "Type": {
+    "$ref": "./Type.json"
+  },
+  "ErrorModel": {
+    "$ref": "./ErrorModel.json"
+  }
+}

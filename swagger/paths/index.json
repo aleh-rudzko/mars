@@ -1,0 +1,8 @@
+{
+  "/types": {
+    "$ref": "./typeList.json"
+  },
+  "/types/{id}": {
+    "$ref": "./typeDetail.json"
+  }
+}
