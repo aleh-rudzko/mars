@@ -9,10 +9,14 @@ const EntitySchema = new Schema({
         trim: true
     },
     description: String,
-}, { timestamps: true });
-
-EntitySchema.set("toJSON", {
-    virtuals: true
+}, {
+    timestamps: true,
+    toObject: {
+        virtuals: true
+    },
+    toJSON: {
+        virtuals: true
+    }
 });
 
 EntitySchema.pre("findByIdAndUpdate", function(next) {

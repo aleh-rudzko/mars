@@ -9,10 +9,14 @@ const TypeSchema = new Schema({
         trim: true
     },
     description: String,
-}, { timestamps: true });
-
-TypeSchema.set("toJSON", {
-    virtuals: true
+}, {
+    timestamps: true,
+    toObject: {
+        virtuals: true
+    },
+    toJSON: {
+        virtuals: true
+    }
 });
 
 TypeSchema.pre("findByIdAndUpdate", function(next) {

@@ -1,0 +1,82 @@
+{
+  "get": {
+    "tags": [
+      "Entity"
+    ],
+    "summary": "Get Entity",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Get Entity",
+        "schema": {
+          "$ref": "#/definitions/Entity"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Entity"
+    ],
+    "summary": "Update Entity",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      },
+      {
+        "name": "Update Entity",
+        "in": "body",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NewEntity"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Update Entity",
+        "schema": {
+          "$ref": "#/definitions/Entity"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Entity"
+    ],
+    "summary": "Delete Entity",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "No content"
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  }
+}

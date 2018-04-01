@@ -5,14 +5,14 @@
   ],
   "allOf": [
     {
-      "$ref": "#/definitions/NewType"
+      "$ref": "#/definitions/NewEntity"
     },
     {
       "required": [
-        "_id"
+        "id"
       ],
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
           "example": "5aad982d923a052cb56a219c"
         },

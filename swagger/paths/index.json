@@ -1,8 +1,14 @@
 {
   "/types": {
-    "$ref": "./typeList.json"
+    "$ref": "./type/List.json"
   },
   "/types/{id}": {
-    "$ref": "./typeDetail.json"
+    "$ref": "./type/Detail.json"
+  },
+  "/entities": {
+    "$ref": "./entity/List.json"
+  },
+  "/entities/{id}": {
+    "$ref": "./entity/Detail.json"
   }
 }

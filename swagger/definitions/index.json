@@ -1,9 +1,15 @@
 {
   "NewType": {
-    "$ref": "./NewType.json"
+    "$ref": "./type/NewType.json"
   },
   "Type": {
-    "$ref": "./Type.json"
+    "$ref": "./type/Type.json"
+  },
+  "NewEntity": {
+    "$ref": "./entity/NewEntity.json"
+  },
+  "Entity": {
+    "$ref": "./entity/Entity.json"
   },
   "ErrorModel": {
     "$ref": "./ErrorModel.json"
