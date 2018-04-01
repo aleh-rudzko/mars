@@ -13,6 +13,7 @@ import config from "./etc/config";
 import errorHandler from "./middleware/errorHandler";
 import entityRoutes from "./api/entity";
 import { getEntityModel } from "./models/entity";
+import { getPropertyAddressModel } from "./models/propertyAddress";
 
 export default class Server {
     public app: express.Application;
@@ -52,7 +53,8 @@ export default class Server {
 
         this.models = {
             type: getTypeModel(),
-            entity: getEntityModel()
+            entity: getEntityModel(),
+            propertyAddress: getPropertyAddressModel()
         };
     }
 
@@ -77,6 +79,7 @@ export default class Server {
     public api() {
         this.app.use("/api/v1/types", typeRoutes);
         this.app.use("/api/v1/entities", entityRoutes);
+        this.app.use("/api/v1/addresses", entityRoutes);
 
         this.app.use(errorHandler);
     }

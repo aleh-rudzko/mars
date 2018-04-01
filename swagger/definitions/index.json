@@ -11,6 +11,12 @@
   "Entity": {
     "$ref": "./entity/Entity.json"
   },
+  "NewAddress": {
+    "$ref": "./address/NewAddress.json"
+  },
+  "Address": {
+    "$ref": "./address/Address.json"
+  },
   "ErrorModel": {
     "$ref": "./ErrorModel.json"
   }

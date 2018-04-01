@@ -1,0 +1,56 @@
+{
+  "get": {
+    "tags": [
+      "Address"
+    ],
+    "summary": "Get list of addresses",
+    "responses": {
+      "200": {
+        "description": "List of addresses",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Address"
+    ],
+    "summary": "Create address",
+    "parameters": [
+      {
+        "name": "New Address",
+        "in": "body",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NewAddress"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "List of addresses",
+        "schema": {
+          "type": "object",
+          "$ref": "#/definitions/Address"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  }
+}

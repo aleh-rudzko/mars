@@ -10,5 +10,11 @@
   },
   "/entities/{id}": {
     "$ref": "./entity/Detail.json"
+  },
+  "/addresses": {
+    "$ref": "./address/List.json"
+  },
+  "/addresses/{id}": {
+    "$ref": "./address/Detail.json"
   }
 }

@@ -5,11 +5,11 @@ import { ObjectNotFound } from "../errors";
 interface EntityService {
     all(): Promise<Entity[]>;
 
-    create(Entity: Entity): Promise<Entity>;
+    create(entity: Entity): Promise<Entity>;
 
     findById(id: string): Promise<Entity>;
 
-    update(Entity: Entity): Promise<Entity>;
+    update(entity: Entity): Promise<Entity>;
 
     remove(id: string): Promise<Entity>;
 }

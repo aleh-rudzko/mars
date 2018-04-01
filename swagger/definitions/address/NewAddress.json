@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": [
+    "street"
+  ],
+  "properties": {
+    "street": {
+      "type": "string",
+      "example": "Независимости 5"
+    },
+    "city": {
+      "type": "string",
+      "example": "Минск"
+    },
+    "country": {
+      "type": "string",
+      "default": "Беларусь",
+      "example": "Беларусь"
+    }
+  }
+}
