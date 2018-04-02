@@ -10,6 +10,16 @@ export class InternalServerError extends BaseError {
     }
 }
 
+export class CrudTypeNotFound<T> extends BaseError {
+    constructor() {
+        // tslint:disable
+        // because const require an object for this type
+        let constructor: { new (): T };
+        // tslint:enable
+        super(404, 100, constructor.name + " not found");
+    }
+}
+
 export class TypeNotFound extends BaseError {
     constructor() {
         super(404, 100, "Type not found");
