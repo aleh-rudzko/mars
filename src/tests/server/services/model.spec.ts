@@ -6,7 +6,7 @@ import IModel from "../../../server/interfaces/model";
 import BaseSpec from "./base.spec";
 
 @suite("Model service")
-class ModelSpec implements BaseSpec{
+class ModelSpec implements BaseSpec {
 
     public static async before() {
         should();

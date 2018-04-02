@@ -1,7 +1,7 @@
-import CrudService, { ICrudMongooseService } from "./crud";
-import { IModelDocument, ModelModel } from "../models/model";
-import IModel from "../interfaces/model";
+import CRUDService, { CRUDMongooseService } from "./crud";
+import { ModelDocument, ModelModel } from "../models/model";
+import Model from "../interfaces/model";
 
-interface IModelService extends ICrudMongooseService<IModel> {}
+interface ModelService extends CRUDMongooseService<Model> {}
 
-export const ModelService: IModelService = new CrudService<IModelDocument, IModel>(ModelModel);
+export const ModelService: ModelService = new CRUDService<ModelDocument, Model>(ModelModel);

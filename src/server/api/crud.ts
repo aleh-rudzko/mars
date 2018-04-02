@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { ICrudMongooseService } from "../services/crud";
+import { CRUDMongooseService } from "../services/crud";
 import BaseModel from "../interfaces/base";
 
-
-export default function CrudAPI(crudService: ICrudMongooseService<BaseModel>) {
+export default function CRUDAPI(crudService: CRUDMongooseService<BaseModel>) {
     const router = Router();
 
     router.get("/", async (req: Request, res: Response, next: NextFunction) => {
@@ -61,4 +60,3 @@ export default function CrudAPI(crudService: ICrudMongooseService<BaseModel>) {
 
     return router;
 }
-

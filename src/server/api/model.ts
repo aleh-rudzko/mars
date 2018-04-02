@@ -1,6 +1,6 @@
-import CrudAPI from "./crud";
+import CRUDAPI from "./crud";
 import { ModelService } from "../services/model";
 
-const modelAPI = CrudAPI(ModelService);
+const modelAPI = CRUDAPI(ModelService);
 
 export default modelAPI;

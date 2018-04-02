@@ -1,8 +1,7 @@
-import { Model, model, Document } from "mongoose";
-import IModel from "../interfaces/model";
-import ModelSchema from "../shemas/model";
+import { Model as MongooseModel, model, Document } from "mongoose";
+import Model from "../interfaces/model";
+import ModelSchema from "../schemas/model";
 
+export interface ModelDocument extends Document, Model { }
 
-export interface IModelDocument extends Document, IModel { }
-
-export const ModelModel: Model<IModelDocument> = model<IModelDocument>("Model", ModelSchema);
+export const ModelModel: MongooseModel<ModelDocument> = model<ModelDocument>("Model", ModelSchema);

@@ -1,8 +1,6 @@
 import BaseModel from "./base";
 
-export default interface IModel extends BaseModel {
+export default interface Model extends BaseModel {
     id?: any;
     name: string;
-    createdAt?: Date;
-    updatedAt?: Date;
 }
