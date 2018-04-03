@@ -60,7 +60,8 @@ class AddressSpec {
 
     @test("Update address")
     public async updateAddress() {
-        const createdAddress = await getPropertyAddressModel().create({ street: "test", city: "test", country: "test" });
+        const createdAddress = await getPropertyAddressModel()
+            .create({ street: "test", city: "test", country: "test" });
 
         const data: PropertyAddress = {
             id: createdAddress.id,
@@ -83,7 +84,8 @@ class AddressSpec {
 
     @test("Remove address")
     public async removeAddress() {
-        const createdAddress = await getPropertyAddressModel().create({ street: "test", city: "test", country: "test" });
+        const createdAddress = await getPropertyAddressModel()
+            .create({ street: "test", city: "test", country: "test" });
 
         await getPropertyAddressService().remove(createdAddress.id);
 

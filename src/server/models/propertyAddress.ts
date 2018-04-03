@@ -1,7 +1,6 @@
 import { Model, model, Schema, Document } from "mongoose";
 import { PropertyAddress } from "../interfaces/propertyAddress";
 
-
 const PropertyAddressSchema = new Schema({
     street: {
         type: String,
@@ -34,7 +33,6 @@ PropertyAddressSchema.pre("findByIdAndUpdate", function(next) {
     this.updatedAt = Date.now();
     next();
 });
-
 
 export interface PropertyAddressModel extends Document, PropertyAddress { }
 

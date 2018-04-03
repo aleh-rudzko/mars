@@ -6,5 +6,5 @@ import { PropertyAddressModel } from "../models/propertyAddress";
 export interface Models {
     type: Model<TypeModel>;
     entity: Model<EntityModel>;
-    propertyAddress: Model<PropertyAddressModel>
+    propertyAddress: Model<PropertyAddressModel>;
 }
