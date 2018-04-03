@@ -20,9 +20,9 @@ export class CrudTypeNotFound<T> extends BaseError {
     }
 }
 
-export class TypeNotFound extends BaseError {
-    constructor() {
-        super(404, 100, "Type not found");
+export class ObjectNotFound extends BaseError {
+    constructor(objectName: string = "Object") {
+        super(404, 100, `${objectName} not found`);
     }
 }
 

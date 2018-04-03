@@ -1,0 +1,56 @@
+{
+  "get": {
+    "tags": [
+      "Entity"
+    ],
+    "summary": "Get list of entities",
+    "responses": {
+      "200": {
+        "description": "List of entities",
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entity"
+          }
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Entity"
+    ],
+    "summary": "Create Entity",
+    "parameters": [
+      {
+        "name": "New Entity",
+        "in": "body",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NewEntity"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "List of entities",
+        "schema": {
+          "type": "object",
+          "$ref": "#/definitions/Entity"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  }
+}

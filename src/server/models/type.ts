@@ -1,4 +1,4 @@
-import { Model, model, Document } from "mongoose";
+import { Model, model, Schema, Document } from "mongoose";
 import { Type } from "../interfaces/type";
 import TypeSchema from "../schemas/type";
 

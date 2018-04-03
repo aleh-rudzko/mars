@@ -16,6 +16,8 @@ export default function errorHandler(err: any, req: Request, res: Response, next
             error = new InternalServerError();
         }
 
+        console.log(err); // tslint:disable-line
+
         res.status(error.status).send({
             code: error.code,
             message: error.message

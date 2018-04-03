@@ -8,9 +8,13 @@ import * as path from "path";
 import { Models } from "./utils/models";
 import { getTypeModel } from "./models/type";
 const swaggerUi = require("swagger-ui-express");
+const resolveRefs = require("json-refs").resolveRefs;
 
 import config from "./etc/config";
 import errorHandler from "./middleware/errorHandler";
+import entityRoutes from "./api/entity";
+import { getEntityModel } from "./models/entity";
+import { getPropertyAddressModel } from "./models/propertyAddress";
 
 export default class Server {
     public app: express.Application;
@@ -37,7 +41,7 @@ export default class Server {
         this.app.use("/node_modules",  express.static(path.join(process.cwd(), "node_modules")));
         this.app.use("/public", express.static(path.join(process.cwd(), "public")));
 
-        this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(require("../../swagger.json")));
+        this.setUpSwagger();
 
         this.app.use(logger("dev"));
         this.app.use(bodyParser.json());
@@ -49,8 +53,22 @@ export default class Server {
         setUpDBConnection();
 
         this.models = {
-            type: getTypeModel()
+            type: getTypeModel(),
+            entity: getEntityModel(),
+            propertyAddress: getPropertyAddressModel()
         };
+    }
+
+    public setUpSwagger() {
+        const root = require("../../swagger/swagger.json");
+        const options = {
+            location: "swagger"
+        };
+
+        resolveRefs(root, options).then(results => {
+            this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(results.resolved));
+        });
+
     }
 
     public routes() {
@@ -62,6 +80,8 @@ export default class Server {
     public api() {
         this.app.use("/api/v1/types", typeRoutes);
         this.app.use("/api/v1/models", modelAPI);
+        this.app.use("/api/v1/entities", entityRoutes);
+        this.app.use("/api/v1/addresses", entityRoutes);
 
         this.app.use(errorHandler);
     }

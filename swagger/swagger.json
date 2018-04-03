@@ -1,0 +1,25 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Mars - API",
+    "title": "Mars"
+  },
+  "basePath": "/api/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "$ref": "swagger/paths/index.json"
+  },
+  "parameters": {
+    "$ref": "swagger/parameters/index.json"
+  },
+  "definitions": {
+    "$ref": "swagger/definitions/index.json"
+  }
+}
+

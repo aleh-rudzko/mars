@@ -1,0 +1,5 @@
+{
+  "ObjectId": {
+    "$ref": "./ObjectId.json"
+  }
+}

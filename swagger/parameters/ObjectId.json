@@ -1,0 +1,8 @@
+{
+  "name": "id",
+  "description": "Id",
+  "in": "path",
+  "required": true,
+  "type": "string",
+  "example": "5aad982d923a052cb56a219c"
+}

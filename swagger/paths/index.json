@@ -1,0 +1,20 @@
+{
+  "/types": {
+    "$ref": "./type/List.json"
+  },
+  "/types/{id}": {
+    "$ref": "./type/Detail.json"
+  },
+  "/entities": {
+    "$ref": "./entity/List.json"
+  },
+  "/entities/{id}": {
+    "$ref": "./entity/Detail.json"
+  },
+  "/addresses": {
+    "$ref": "./address/List.json"
+  },
+  "/addresses/{id}": {
+    "$ref": "./address/Detail.json"
+  }
+}

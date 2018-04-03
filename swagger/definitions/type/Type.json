@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "allOf": [
+    {
+      "$ref": "#/definitions/NewType"
+    },
+    {
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "5aad982d923a052cb56a219c"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Update time (ISO 8601 timestamp)",
+          "example": "2018-03-17T22:35:25.245Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Update time (ISO 8601 timestamp)",
+          "example": "2018-03-17T22:35:25.245Z"
+        }
+      }
+    }
+  ]
+}

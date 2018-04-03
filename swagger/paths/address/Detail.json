@@ -1,0 +1,82 @@
+{
+  "get": {
+    "tags": [
+      "Address"
+    ],
+    "summary": "Get address",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Get address",
+        "schema": {
+          "$ref": "#/definitions/Address"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "put": {
+    "tags": [
+      "Address"
+    ],
+    "summary": "Update address",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      },
+      {
+        "name": "Update address",
+        "in": "body",
+        "required": true,
+        "schema": {
+          "$ref": "#/definitions/NewAddress"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Update address",
+        "schema": {
+          "$ref": "#/definitions/Address"
+        }
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Address"
+    ],
+    "summary": "Delete Address",
+    "parameters": [
+      {
+        "$ref": "#/parameters/ObjectId"
+      }
+    ],
+    "responses": {
+      "204": {
+        "description": "No content"
+      },
+      "default": {
+        "description": "unexpected error",
+        "schema": {
+          "$ref": "#/definitions/ErrorModel"
+        }
+      }
+    }
+  }
+}

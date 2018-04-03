@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "typeName"
+    },
+    "description": {
+      "type": "string",
+      "example": "typeDescription"
+    }
+  }
+}
