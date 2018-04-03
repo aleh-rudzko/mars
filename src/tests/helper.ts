@@ -1,7 +1,7 @@
-import { setUpConnection, closeConnection } from "../server/utils/databaseUtil";
+import { closeConnection, setUpDBConnection } from "../server/utils/databaseUtil";
 
 before(async () => {
-    await setUpConnection();
+    await setUpDBConnection();
 });
 
 after(async () => {

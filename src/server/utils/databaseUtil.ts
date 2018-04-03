@@ -1,7 +1,7 @@
 import * as mongoose from "mongoose";
 import config from "../etc/config";
 
-export async function setUpConnection() {
+export async function setUpDBConnection() {
     const db = mongoose.connection;
 
     db.on("error", () => {
