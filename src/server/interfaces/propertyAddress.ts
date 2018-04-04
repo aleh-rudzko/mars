@@ -1,8 +1,7 @@
-export interface PropertyAddress {
-    id?: any;
+import BaseModel from "./base";
+
+export interface PropertyAddress extends BaseModel {
     street: string;
     city: string;
     country?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
 }
