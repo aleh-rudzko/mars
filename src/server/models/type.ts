@@ -1,14 +1,7 @@
-import { Model, model, Schema, Document } from "mongoose";
-import { Type } from "../interfaces/type";
+import { Model, model, Document } from "mongoose";
 import TypeSchema from "../schemas/type";
+import { Type } from "../interfaces/type";
 
-export interface TypeModel extends Document, Type { }
+export interface TypeDocument extends Document, Type { }
 
-let typeModel: Model<TypeModel>;
-
-export function getTypeModel(): Model<TypeModel> {
-    if (!typeModel) {
-        typeModel = model<TypeModel>("Type", TypeSchema);
-    }
-    return typeModel;
-}
+export const TypeModel: Model<TypeDocument> = model<TypeDocument>("Type", TypeSchema);
