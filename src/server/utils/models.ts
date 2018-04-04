@@ -1,7 +1,7 @@
-import { TypeDocument } from "../models/type";
+import { TypeDocument } from "../entities/type/type.model";
 import { Model } from "mongoose";
-import { EntityDocument } from "../models/entity";
-import { PropertyAddressDocument } from "../models/propertyAddress";
+import { EntityDocument } from "../entities/entity/entity.model";
+import { PropertyAddressDocument } from "../entities/propertyAddress/propertyAddress.model";
 
 export interface Models {
     type: Model<TypeDocument>;

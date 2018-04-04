@@ -1,6 +1,6 @@
-import { PropertyAddress } from "../interfaces/propertyAddress";
-import { PropertyAddressDocument, PropertyAddressModel } from "../models/propertyAddress";
-import CRUDService, { MongooseCRUDService } from "./crud";
+import { PropertyAddress } from "./propertyAddress.interface";
+import { PropertyAddressDocument, PropertyAddressModel } from "./propertyAddress.model";
+import CRUDService, { MongooseCRUDService } from "../common/crud.service";
 
 interface PropertyAddressCRUDService extends MongooseCRUDService<PropertyAddress> {}
 

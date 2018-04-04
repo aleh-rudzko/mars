@@ -1,6 +1,6 @@
 import { Model, Document } from "mongoose";
-import { CrudTypeNotFound } from "../errors";
-import BaseModel from "../interfaces/base";
+import { CrudTypeNotFound } from "../../errors";
+import BaseModel from "./base.interface";
 
 export interface CRUDServiceBase<TDocument extends Document & TInstance, TInstance extends BaseModel> {
     all(): Promise<TInstance[]>;

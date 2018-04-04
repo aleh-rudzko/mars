@@ -1,6 +1,6 @@
 import { Model, model, Document } from "mongoose";
-import { PropertyAddress } from "../interfaces/propertyAddress";
-import PropertyAddressSchema from "../schemas/propertyAddress";
+import { PropertyAddress } from "./propertyAddress.interface";
+import PropertyAddressSchema from "./propertyAddress.schema";
 
 export interface PropertyAddressDocument extends Document, PropertyAddress { }
 

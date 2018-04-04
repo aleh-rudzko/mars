@@ -1,5 +1,5 @@
 import * as express from "express";
-import typeRoutes from "./api/type";
+import typeRoutes from "./entities/type/type.api";
 import { setUpDBConnection } from "./utils/databaseUtil";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
@@ -9,9 +9,9 @@ const resolveRefs = require("json-refs").resolveRefs;
 
 import config from "./etc/config";
 import errorHandler from "./middleware/errorHandler";
-import entityRoutes from "./api/entity";
-import modelAPI from "./api/model";
-import propertyAddressAPI from "./api/propertyAddress";
+import entityRoutes from "./entities/entity/entity.api";
+import modelAPI from "./entities/model/model.api";
+import propertyAddressAPI from "./entities/propertyAddress/propertyAddress.api";
 
 export default class Server {
     public app: express.Application;

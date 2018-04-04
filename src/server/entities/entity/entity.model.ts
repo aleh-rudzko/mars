@@ -1,6 +1,6 @@
 import { Model, model, Document } from "mongoose";
-import {Entity} from "../interfaces/entity";
-import EntitySchema from "../schemas/entity";
+import {Entity} from "./entity.interface";
+import EntitySchema from "./entity.schema";
 
 export interface EntityDocument extends Document, Entity { }
 

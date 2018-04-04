@@ -1,6 +1,6 @@
 import { Model, model, Document } from "mongoose";
-import TypeSchema from "../schemas/type";
-import { Type } from "../interfaces/type";
+import TypeSchema from "./type.schema";
+import { Type } from "./type.interface";
 
 export interface TypeDocument extends Document, Type { }
 

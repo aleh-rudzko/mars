@@ -1,4 +1,4 @@
-import BaseModel from "./base";
+import BaseModel from "../common/base.interface";
 
 export interface PropertyAddress extends BaseModel {
     street: string;

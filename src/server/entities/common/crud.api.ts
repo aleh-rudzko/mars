@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { MongooseCRUDService } from "../services/crud";
-import BaseModel from "../interfaces/base";
+import { MongooseCRUDService } from "./crud.service";
+import BaseModel from "./base.interface";
 
 export default function CRUDAPI(crudService: MongooseCRUDService<BaseModel>) {
     const router = Router();

@@ -1,8 +1,8 @@
 import { expect, should } from "chai";
 import { suite, test } from "mocha-typescript";
-import { EntityModel } from "../../../server/models/entity";
-import { Entity } from "../../../server/interfaces/entity";
-import { EntityService } from "../../../server/services/entity";
+import { EntityModel } from "../../../server/entities/entity/entity.model";
+import { Entity } from "../../../server/entities/entity/entity.interface";
+import { EntityService } from "../../../server/entities/entity/entity.service";
 import BaseSpec from "./base.spec";
 
 @suite("Entity service")

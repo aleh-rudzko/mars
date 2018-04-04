@@ -1,8 +1,8 @@
 import { expect, should } from "chai";
 import { suite, test } from "mocha-typescript";
-import { PropertyAddressModel } from "../../../server/models/propertyAddress";
-import { PropertyAddressService } from "../../../server/services/propertyAddress";
-import { PropertyAddress } from "../../../server/interfaces/propertyAddress";
+import { PropertyAddressModel } from "../../../server/entities/propertyAddress/propertyAddress.model";
+import { PropertyAddressService } from "../../../server/entities/propertyAddress/propertyAddress.service";
+import { PropertyAddress } from "../../../server/entities/propertyAddress/propertyAddress.interface";
 import BaseSpec from "./base.spec";
 
 @suite("Address service")
