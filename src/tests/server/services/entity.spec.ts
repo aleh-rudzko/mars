@@ -1,29 +1,30 @@
 import { expect, should } from "chai";
 import { suite, test } from "mocha-typescript";
-import { getEntityModel } from "../../../server/models/entity";
+import { EntityModel } from "../../../server/models/entity";
 import { Entity } from "../../../server/interfaces/entity";
-import getEntityService from "../../../server/services/entity";
+import { EntityService } from "../../../server/services/entity";
+import BaseSpec from "./base.spec";
 
 @suite("Entity service")
-class EntitySpec {
+class EntitySpec implements BaseSpec {
 
     public static async before() {
         should();
     }
 
     public async before() {
-        await getEntityModel().collection.drop();
+        await EntityModel.collection.drop();
     }
 
     @test("Get all entities")
-    public async getTypes() {
+    public async getEntities() {
         await Promise.all([
-            getEntityModel().create({ name: "test", description: "test" }),
-            getEntityModel().create({ name: "test2", description: "test" }),
-            getEntityModel().create({ name: "test3", description: "test" })
+            EntityModel.create({ name: "test", description: "test" }),
+            EntityModel.create({ name: "test2", description: "test" }),
+            EntityModel.create({ name: "test3", description: "test" })
         ]);
 
-        const entities = await getEntityService().all();
+        const entities = await EntityService.all();
 
         expect(entities.length).to.be.equal(3);
     }
@@ -33,9 +34,9 @@ class EntitySpec {
         const name = "test";
         const description = "testDescription";
 
-        await getEntityService().create({ name , description });
+        await EntityService.create({ name , description });
 
-        const entity = await getEntityModel().findOne({ name });
+        const entity = await EntityModel.findOne({ name });
 
         expect(entity.name).to.be.equal(name);
         expect(entity.description).to.be.equal(description);
@@ -45,9 +46,9 @@ class EntitySpec {
 
     @test("Find entity by Id")
     public async findById() {
-        const createdEntity = await getEntityModel().create({ name: "test", description: "test" });
+        const createdEntity = await EntityModel.create({ name: "test", description: "test" });
 
-        const entity = await getEntityService().findById(createdEntity.id);
+        const entity = await EntityService.get(createdEntity.id);
 
         expect(entity.name).to.be.equal("test");
         expect(entity.description).to.be.equal("test");
@@ -57,7 +58,7 @@ class EntitySpec {
 
     @test("Update entity")
     public async updateEntity() {
-        const createdEntity = await getEntityModel().create({name: "test", description: "test"});
+        const createdEntity = await EntityModel.create({name: "test", description: "test"});
 
         const data: Entity = {
             id: createdEntity.id,
@@ -65,9 +66,9 @@ class EntitySpec {
             description: "updatedDescription"
         };
 
-        await getEntityService().update(data);
+        await EntityService.update(data);
 
-        const entity = await getEntityModel().findById(createdEntity.id);
+        const entity = await EntityModel.findById(createdEntity.id);
 
         expect(entity.id).to.be.equal(data.id);
         expect(entity.name).to.be.equal(data.name);
@@ -78,11 +79,11 @@ class EntitySpec {
 
     @test("Remove entity")
     public async removeEntity() {
-        const createdEntity = await getEntityModel().create({name: "test", description: "test"});
+        const createdEntity = await EntityModel.create({name: "test", description: "test"});
 
-        await getEntityService().remove(createdEntity.id);
+        await EntityService.remove(createdEntity.id);
 
-        const entity = await getEntityModel().findById(createdEntity.id);
+        const entity = await EntityModel.findById(createdEntity.id);
 
         expect(entity).to.be.null;
     }

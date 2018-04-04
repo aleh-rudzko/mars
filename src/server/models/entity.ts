@@ -1,36 +1,7 @@
-import { Model, model, Schema, Document } from "mongoose";
+import { Model, model, Document } from "mongoose";
 import {Entity} from "../interfaces/entity";
+import EntitySchema from "../schemas/entity";
 
-const EntitySchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
-    },
-    description: String,
-}, {
-    timestamps: true,
-    toObject: {
-        virtuals: true
-    },
-    toJSON: {
-        virtuals: true
-    }
-});
+export interface EntityDocument extends Document, Entity { }
 
-EntitySchema.pre("findByIdAndUpdate", function(next) {
-    this.updatedAt = Date.now();
-    next();
-});
-
-export interface EntityModel extends Document, Entity { }
-
-let entityModel: Model<EntityModel>;
-
-export function getEntityModel(): Model<EntityModel> {
-    if (!entityModel) {
-        entityModel = model<EntityModel>("Entity", EntitySchema);
-    }
-    return entityModel;
-}
+export const EntityModel: Model<EntityDocument> = model<EntityDocument>("Entity", EntitySchema);

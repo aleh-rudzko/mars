@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { CRUDMongooseService } from "../services/crud";
+import { MongooseCRUDService } from "../services/crud";
 import BaseModel from "../interfaces/base";
 
-export default function CRUDAPI(crudService: CRUDMongooseService<BaseModel>) {
+export default function CRUDAPI(crudService: MongooseCRUDService<BaseModel>) {
     const router = Router();
 
     router.get("/", async (req: Request, res: Response, next: NextFunction) => {

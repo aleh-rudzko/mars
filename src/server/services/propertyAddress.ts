@@ -1,8 +1,8 @@
 import { PropertyAddress } from "../interfaces/propertyAddress";
 import { PropertyAddressDocument, PropertyAddressModel } from "../models/propertyAddress";
-import CRUDService, { CRUDMongooseService } from "./crud";
+import CRUDService, { MongooseCRUDService } from "./crud";
 
-interface ModelService extends CRUDMongooseService<PropertyAddress> {}
+interface PropertyAddressCRUDService extends MongooseCRUDService<PropertyAddress> {}
 
-export const PropertyAddressService: ModelService =
+export const PropertyAddressService: PropertyAddressCRUDService =
     new CRUDService<PropertyAddressDocument, PropertyAddress>(PropertyAddressModel);

@@ -6,7 +6,7 @@ import { PropertyAddress } from "../../../server/interfaces/propertyAddress";
 import BaseSpec from "./base.spec";
 
 @suite("Address service")
-class AddressSpec implements BaseSpec{
+class AddressSpec implements BaseSpec {
 
     public static async before() {
         should();
