@@ -1,25 +1,22 @@
 import * as express from "express";
-import typeRoutes from "./api/type";
-import modelAPI from "./api/model";
+import typeRoutes from "./entities/type/type.api";
 import { setUpDBConnection } from "./utils/databaseUtil";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as path from "path";
-import { Models } from "./utils/models";
-import { getTypeModel } from "./models/type";
 const swaggerUi = require("swagger-ui-express");
 const resolveRefs = require("json-refs").resolveRefs;
 
 import config from "./etc/config";
 import errorHandler from "./middleware/errorHandler";
-import entityRoutes from "./api/entity";
-import { getEntityModel } from "./models/entity";
-import { getPropertyAddressModel } from "./models/propertyAddress";
+import entityRoutes from "./entities/entity/entity.api";
+import modelAPI from "./entities/model/model.api";
+import propertyAddressAPI from "./entities/propertyAddress/propertyAddress.api";
 
 export default class Server {
     public app: express.Application;
 
-    public models: Models;
+    // public models: Models;
 
     public static bootstrap(): Server {
         return new Server();
@@ -52,11 +49,12 @@ export default class Server {
 
         setUpDBConnection();
 
-        this.models = {
-            type: getTypeModel(),
-            entity: getEntityModel(),
-            propertyAddress: getPropertyAddressModel()
-        };
+        // TODO: remake logic. Put models in request
+        // this.models = {
+        //     type: getTypeModel(),
+        //     entity: getEntityModel(),
+        //     propertyAddress: getPropertyAddressModel()
+        // };
     }
 
     public setUpSwagger() {
@@ -81,7 +79,7 @@ export default class Server {
         this.app.use("/api/v1/types", typeRoutes);
         this.app.use("/api/v1/models", modelAPI);
         this.app.use("/api/v1/entities", entityRoutes);
-        this.app.use("/api/v1/addresses", entityRoutes);
+        this.app.use("/api/v1/addresses", propertyAddressAPI);
 
         this.app.use(errorHandler);
     }

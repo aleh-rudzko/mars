@@ -1,10 +1,10 @@
-import { TypeModel } from "../models/type";
+import { TypeDocument } from "../entities/type/type.model";
 import { Model } from "mongoose";
-import { EntityModel } from "../models/entity";
-import { PropertyAddressModel } from "../models/propertyAddress";
+import { EntityDocument } from "../entities/entity/entity.model";
+import { PropertyAddressDocument } from "../entities/propertyAddress/propertyAddress.model";
 
 export interface Models {
-    type: Model<TypeModel>;
-    entity: Model<EntityModel>;
-    propertyAddress: Model<PropertyAddressModel>
+    type: Model<TypeDocument>;
+    entity: Model<EntityDocument>;
+    propertyAddress: Model<PropertyAddressDocument>;
 }

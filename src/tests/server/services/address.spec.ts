@@ -1,29 +1,30 @@
 import { expect, should } from "chai";
 import { suite, test } from "mocha-typescript";
-import { getPropertyAddressModel } from "../../../server/models/propertyAddress";
-import getPropertyAddressService from "../../../server/services/propertyAddress";
-import { PropertyAddress } from "../../../server/interfaces/propertyAddress";
+import { PropertyAddressModel } from "../../../server/entities/propertyAddress/propertyAddress.model";
+import { PropertyAddressService } from "../../../server/entities/propertyAddress/propertyAddress.service";
+import { PropertyAddress } from "../../../server/entities/propertyAddress/propertyAddress.interface";
+import BaseSpec from "./base.spec";
 
 @suite("Address service")
-class AddressSpec {
+class AddressSpec implements BaseSpec {
 
     public static async before() {
         should();
     }
 
     public async before() {
-        await getPropertyAddressModel().collection.drop();
+        await PropertyAddressModel.collection.drop();
     }
 
-    @test("Get all entities")
-    public async getTypes() {
+    @test("Get all addresses")
+    public async getAll() {
         await Promise.all([
-            getPropertyAddressModel().create({ street: "test", city: "test", country: "test" }),
-            getPropertyAddressModel().create({ street: "test2", city: "test", country: "test" }),
-            getPropertyAddressModel().create({ street: "test3", city: "test", country: "test" })
+            PropertyAddressModel.create({ street: "test", city: "test", country: "test" }),
+            PropertyAddressModel.create({ street: "test2", city: "test", country: "test" }),
+            PropertyAddressModel.create({ street: "test3", city: "test", country: "test" })
         ]);
 
-        const addresses = await getPropertyAddressService().all();
+        const addresses = await PropertyAddressService.all();
 
         expect(addresses.length).to.be.equal(3);
     }
@@ -34,9 +35,9 @@ class AddressSpec {
         const city = "test";
         const country = "test";
 
-        await getPropertyAddressService().create({ street, city, country });
+        await PropertyAddressService.create({ street, city, country });
 
-        const address = await getPropertyAddressModel().findOne({ street });
+        const address = await PropertyAddressModel.findOne({ street });
 
         expect(address.street).to.be.equal(street);
         expect(address.city).to.be.equal(city);
@@ -47,9 +48,9 @@ class AddressSpec {
 
     @test("Find address by Id")
     public async findById() {
-        const createdAddress = await getPropertyAddressModel().create({ street: "test", city: "test" });
+        const createdAddress = await PropertyAddressModel.create({ street: "test", city: "test" });
 
-        const address = await getPropertyAddressService().findById(createdAddress.id);
+        const address = await PropertyAddressService.get(createdAddress.id);
 
         expect(address.street).to.be.equal("test");
         expect(address.city).to.be.equal("test");
@@ -60,7 +61,8 @@ class AddressSpec {
 
     @test("Update address")
     public async updateAddress() {
-        const createdAddress = await getPropertyAddressModel().create({ street: "test", city: "test", country: "test" });
+        const createdAddress = await PropertyAddressModel
+            .create({ street: "test", city: "test", country: "test" });
 
         const data: PropertyAddress = {
             id: createdAddress.id,
@@ -69,9 +71,9 @@ class AddressSpec {
             country: "updatedCountry"
         };
 
-        await getPropertyAddressService().update(data);
+        await PropertyAddressService.update(data);
 
-        const address = await getPropertyAddressModel().findById(createdAddress.id);
+        const address = await PropertyAddressModel.findById(createdAddress.id);
 
         expect(address.id).to.be.equal(data.id);
         expect(address.street).to.be.equal(data.street);
@@ -83,11 +85,12 @@ class AddressSpec {
 
     @test("Remove address")
     public async removeAddress() {
-        const createdAddress = await getPropertyAddressModel().create({ street: "test", city: "test", country: "test" });
+        const createdAddress = await PropertyAddressModel
+            .create({ street: "test", city: "test", country: "test" });
 
-        await getPropertyAddressService().remove(createdAddress.id);
+        await PropertyAddressService.remove(createdAddress.id);
 
-        const address = await getPropertyAddressModel().findById(createdAddress.id);
+        const address = await PropertyAddressModel.findById(createdAddress.id);
 
         expect(address).to.be.null;
     }

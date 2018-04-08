@@ -1,5 +1,4 @@
-import { Model, model, Schema, Document } from "mongoose";
-import {Entity} from "../interfaces/entity";
+import { Schema } from "mongoose";
 
 const EntitySchema = new Schema({
     name: {
@@ -24,13 +23,4 @@ EntitySchema.pre("findByIdAndUpdate", function(next) {
     next();
 });
 
-export interface EntityModel extends Document, Entity { }
-
-let entityModel: Model<EntityModel>;
-
-export function getEntityModel(): Model<EntityModel> {
-    if (!entityModel) {
-        entityModel = model<EntityModel>("Entity", EntitySchema);
-    }
-    return entityModel;
-}
+export default EntitySchema;

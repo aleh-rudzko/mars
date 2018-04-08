@@ -1,6 +1,6 @@
 import { Model, Document } from "mongoose";
-import { CrudTypeNotFound } from "../errors";
-import BaseModel from "../interfaces/base";
+import { CrudTypeNotFound } from "../../errors";
+import BaseModel from "./base.interface";
 
 export interface CRUDServiceBase<TDocument extends Document & TInstance, TInstance extends BaseModel> {
     all(): Promise<TInstance[]>;
@@ -14,7 +14,7 @@ export interface CRUDServiceBase<TDocument extends Document & TInstance, TInstan
     remove(id: string): Promise<TInstance>;
 }
 
-export interface CRUDMongooseService<TInstance> extends CRUDServiceBase<Document & TInstance, TInstance> {}
+export interface MongooseCRUDService<TInstance> extends CRUDServiceBase<Document & TInstance, TInstance> {}
 
 export default class CRUDService<TDocument extends Document & TInstance, TInstance extends BaseModel>
         implements CRUDServiceBase<TDocument, TInstance> {

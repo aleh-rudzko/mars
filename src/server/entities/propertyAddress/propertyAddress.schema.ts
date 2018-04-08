@@ -1,6 +1,4 @@
-import { Model, model, Schema, Document } from "mongoose";
-import { PropertyAddress } from "../interfaces/propertyAddress";
-
+import { Schema } from "mongoose";
 
 const PropertyAddressSchema = new Schema({
     street: {
@@ -35,14 +33,4 @@ PropertyAddressSchema.pre("findByIdAndUpdate", function(next) {
     next();
 });
 
-
-export interface PropertyAddressModel extends Document, PropertyAddress { }
-
-let addressModel: Model<PropertyAddressModel>;
-
-export function getPropertyAddressModel(): Model<PropertyAddressModel> {
-    if (!addressModel) {
-        addressModel = model<PropertyAddressModel>("PropertyAddress", PropertyAddressSchema);
-    }
-    return addressModel;
-}
+export default PropertyAddressSchema;
